@@ -5,6 +5,8 @@ require 'combine_pdf'
 
 # gem install combine_pdf
 
+# pdfFiles=Dir["**/*.pdf"].select{|x| !File.directory?(x)}
+
 pdf = CombinePDF.load("file.pdf")
 
 firstPdf = CombinePDF.new
@@ -15,7 +17,7 @@ firstPdf.save "first1_pages.pdf"
 #Use this cmd to find the printer options: lpoptions -p Anish -l
 system("lpr", "-P", "Anish", "-o", "InputSlot=Tray3", "first1_pages.pdf") or raise "lpr failed"
 
-# '-P', 'LabelWriter-450', -o, InpurtSlot=Lower
+# '-P', 'LabelWriter-450', -o, InpurtSlot=Lower, Middle
 
 secPdf = CombinePDF.new
 i = 0
