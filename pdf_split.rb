@@ -5,7 +5,22 @@ require 'combine_pdf'
 
 # gem install combine_pdf
 
-# pdfFiles=Dir["**/*.pdf"].select{|x| !File.directory?(x)}
+docxFiles=Dir["**/*.docx"].select{|x| !File.directory?(x)}
+
+docxFiles.each do |file|
+   
+    system("lpr", "-P", "PDFwriter", "#{file}") or raise "lpr failed"
+
+    #pdfFilePath = "/private/var/spool/pdfwriter/#{ENV['USER']}"
+
+  end
+
+# Um mit diesem Script unter Mac macOS PDF Dateien erstellen zu können, ist es nötig einen PDF Drucker zu installieren.
+# Für macOS ab Version 10.10 kann die Software PDFwriter for Mac verwendet werden.
+# Download Link: PDFWriter;  http://pdfwriterformac.sourceforge.net/ 
+# Installationsanleitung für PDFWriter https://www.awin.de/pdf_macosx.html 
+
+
 
 pdf = CombinePDF.load("file.pdf")
 
