@@ -15,5 +15,16 @@ end
 #{file}
 
 =end
+#gem install fileutils
+require 'fileutils'
 
-Dir.glob('*.docx').each {|f| system("lpr", "-P", "PDFwriter", f) or raise "lpr failed"}
+Dir.glob('*.docx').each do|f|
+    
+    system("lpr", "-P", "PDFwriter", f) or raise "lpr failed"
+    src_file = File.expand_path("/private/var/spool/pdfwriter/#{ENV['USER']}", __FILE__)
+    #dst_dir = "/Users/anish.madassery/Desktop/Temp\ Invoice\ Splitter/test/TEST/test\ ruby\ /"
+    dst_dir = Dir.pwd
+    Dir.glob("#{src_file}/**/*.*").each do |file|
+    FileUtils.mv(file, dst_dir)
+  end
+end
