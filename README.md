@@ -1,4 +1,4 @@
-# specialPages_Function_4_PDF_Printing
+# RUBY SCRIPT for Printing specialPages 
 
 Folgende gems müssen via Terminal (macOS) installiert werden, damit dieses Skript benutzt werden kann.
 
